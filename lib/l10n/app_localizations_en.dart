@@ -149,6 +149,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get raceRunsTitle => 'Race Runs';
 
   @override
+  String get viewRuns => 'View Runs';
+
+  @override
   String get noRunsForRace => 'No runs for this race';
 
   @override

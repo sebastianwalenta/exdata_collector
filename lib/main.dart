@@ -268,15 +268,19 @@ class _MyHomePageState extends State<MyHomePage> {
                 return ListTile(
                   title: Text(_items[index].name.toString()),
                   subtitle: Text(_items[index].boatClass.toString()),
+                  trailing: IconButton(
+                    icon: const Icon(Icons.list),
+                    tooltip: l10n.viewRuns,
+                    onPressed: () {
+                      if (_items[index].dbID == 0) {
+                        _navigateRunList(_items[index].bID);
+                      } else {
+                        _navigateRunList(_items[index].dbID);
+                      }
+                    },
+                  ),
                   onTap: () {
                     _navigateToNewScreen(_items[index].bID);
-                  },
-                  onLongPress: () {
-                    if (_items[index].dbID == 0) {
-                      _navigateRunList(_items[index].bID);
-                    } else {
-                      _navigateRunList(_items[index].dbID);
-                    }
                   },
                 );
               },
@@ -297,10 +301,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 return ListTile(
                   title: Text(races[index].name.toString()),
                   subtitle: Text('${races[index].date.day.toString().padLeft(2, '0')}/${races[index].date.month.toString().padLeft(2, '0')}/${races[index].date.year}'),
+                  trailing: IconButton(
+                    icon: const Icon(Icons.list),
+                    tooltip: l10n.viewRuns,
+                    onPressed: () {
+                      _navigateToRaceRunList(races[index].rcid);
+                    },
+                  ),
                   onTap: () {
-                    //_navigateToNewScreen(_items[index].bID);
-                  },
-                  onLongPress: () {
                     _navigateToRaceRunList(races[index].rcid);
                   },
                 );

@@ -46,6 +46,7 @@
   "save": "Save",
   "runListTitle": "Run List",
   "raceRunsTitle": "Race Runs",
+  "viewRuns": "View Runs",
   "noRunsForRace": "No runs for this race",
   "backendUrl": "Backend URL:",
   "backendUrlSaved": "Backend URL saved successfully",
