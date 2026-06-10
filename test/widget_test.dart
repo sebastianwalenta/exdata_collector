@@ -8,6 +8,6 @@ void main() {
     await tester.pumpWidget(const MyApp(initialLocale: Locale('cs')));
 
     // Verify that our app title is present.
-    expect(find.text('EXCategory Data Saver'), findsAtLeastNWidgets(1));
+    expect(find.text('EX-Boat DC'), findsAtLeastNWidgets(1));
   });
 }
