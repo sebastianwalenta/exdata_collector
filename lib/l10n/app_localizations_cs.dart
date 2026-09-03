@@ -147,6 +147,9 @@ class AppLocalizationsCs extends AppLocalizations {
   String get raceRunsTitle => 'Jízdy závodu';
 
   @override
+  String get viewRuns => 'Zobrazit jízdy';
+
+  @override
   String get noRunsForRace => 'Žádné jízdy pro tento závod';
 
   @override

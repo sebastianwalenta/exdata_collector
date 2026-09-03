@@ -46,6 +46,7 @@
   "save": "Uložit",
   "runListTitle": "Seznam jízd",
   "raceRunsTitle": "Jízdy závodu",
+  "viewRuns": "Zobrazit jízdy",
   "noRunsForRace": "Žádné jízdy pro tento závod",
   "backendUrl": "URL backendu:",
   "backendUrlSaved": "URL backendu úspěšně uložena",
