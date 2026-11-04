@@ -223,7 +223,7 @@ class AppLocalizationsCs extends AppLocalizations {
   String get project => 'Projekt';
 
   @override
-  String get projectUrl => 'github.com/Thechopsee/exdata_collector';
+  String get projectUrl => 'github.com/sebastianwalenta/exdata_collector';
 
   @override
   String get version => 'Verze';
