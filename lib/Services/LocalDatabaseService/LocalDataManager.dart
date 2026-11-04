@@ -1,3 +1,4 @@
+import 'package:exdata_collector/Models/ActiveRace.dart';
 import 'package:exdata_collector/Services/LocalDatabaseService/BoatDataHandler.dart';
 import 'package:exdata_collector/Services/LocalDatabaseService/IDataHandler.dart';
 import 'package:exdata_collector/Services/LocalDatabaseService/RaceDataHandler.dart';
