@@ -1,3 +1,5 @@
+import 'package:exdata_collector/Helpers/SelfTheme.dart';
+
 import 'Models/Boat.dart';
 import 'Models/Race.dart';
 import 'Services/OnlineSaver.dart';
@@ -110,10 +112,19 @@ class _HomePageState extends State<HomePage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Text(
-              l10n.boats,
-              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            padding: const EdgeInsets.only(left: 0.0, right: 0.0),
+            child: Container(
+              width: double.infinity,
+              height: 40,
+              decoration: BoxDecoration(
+                color: SelfTheme.BLUE,
+              ),
+              child: Center(
+                child: Text(
+                  l10n.boats,
+                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+                ),
+              ),
             ),
           ),
           Expanded(
@@ -143,10 +154,19 @@ class _HomePageState extends State<HomePage> {
           ),
           Divider(),
           Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Text(
-              l10n.races,
-              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            padding: const EdgeInsets.only(left: 0.0, right: 0.0),
+            child: Container(
+              width: double.infinity,
+              height: 40,
+              decoration: BoxDecoration(
+                color: SelfTheme.BLUE,
+              ),
+              child: Center(
+                child: Text(
+                  l10n.races,
+                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+                ),
+              ),
             ),
           ),
           Expanded(
