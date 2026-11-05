@@ -3,6 +3,7 @@
   "appTitle": "EX-Boat DC",
   "boats": "Lodě",
   "races": "Závody",
+  "activeRace": "Aktivní závod",
   "settings": "Nastavení",
   "deleteData": "Smazat data",
   "deleteConfirmTitle": "Smazat data",

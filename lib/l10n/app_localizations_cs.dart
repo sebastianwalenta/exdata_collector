@@ -18,6 +18,9 @@ class AppLocalizationsCs extends AppLocalizations {
   String get races => 'Závody';
 
   @override
+  String get activeRace => 'Aktivní závod';
+
+  @override
   String get settings => 'Nastavení';
 
   @override

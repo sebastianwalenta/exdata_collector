@@ -116,6 +116,12 @@ abstract class AppLocalizations {
   /// **'Závody'**
   String get races;
 
+  /// No description provided for @activeRace.
+  ///
+  /// In cs, this message translates to:
+  /// **'Aktivní závod'**
+  String get activeRace;
+
   /// No description provided for @settings.
   ///
   /// In cs, this message translates to:

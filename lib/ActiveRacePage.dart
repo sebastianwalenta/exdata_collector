@@ -30,7 +30,7 @@ class _ActiveRacePageState extends State<ActiveRacePage> {
     final l10n = AppLocalizations.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text(l10n?.races ?? 'Aktivní závod'),
+        title: Text(l10n?.activeRace ?? 'Aktivní závod'),
       ),
       body: Center(
         child: Column(

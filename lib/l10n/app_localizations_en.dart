@@ -18,6 +18,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get races => 'Races';
 
   @override
+  String get activeRace => 'Active Race';
+
+  @override
   String get settings => 'Settings';
 
   @override

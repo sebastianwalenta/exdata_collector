@@ -3,6 +3,7 @@
   "appTitle": "EX-Boat DC",
   "boats": "Boats",
   "races": "Races",
+  "activeRace": "Active Race",
   "settings": "Settings",
   "deleteData": "Delete Data",
   "deleteConfirmTitle": "Delete Data",

@@ -1,4 +1,5 @@
-import 'package:exdata_collector/Helpers/SelfTheme.dart';
+import 'package:exdata_collector/AboutScreen.dart';
+import 'package:exdata_collector/Services/LocalDatabaseService/LocalDataManager.dart';
 import 'package:flutter/material.dart';
 import 'package:exdata_collector/Services/SettingsManager.dart';
 import 'package:exdata_collector/l10n/app_localizations.dart';
@@ -6,10 +7,10 @@ import 'package:exdata_collector/main.dart';
 import 'package:exdata_collector/Services/OnlineSaver.dart';
 
 class SettingsScreen extends StatefulWidget {
-  const SettingsScreen({Key? key}) : super(key: key);
+  const SettingsScreen({super.key});
 
   @override
-  _SettingsScreenState createState() => _SettingsScreenState();
+  State<SettingsScreen> createState() => _SettingsScreenState();
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
@@ -53,19 +54,25 @@ class _SettingsScreenState extends State<SettingsScreen> {
       await _settingsManager.setLocale(_selectedLocale);
       await _settingsManager.setThemeMode(_selectedThemeMode);
 
+      if (!mounted) return;
+
       // Update app locale
       MyApp.of(context)?.setLocale(Locale(_selectedLocale));
-      
+
       // Update app theme mode
       MyApp.of(context)?.setThemeMode(_selectedThemeMode);
 
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(AppLocalizations.of(context)!.backendUrlSaved)),
       );
-      bool isAvailable = await OnlineSaver.checkServerAvailability(context: context, overrideUrl: url);
-      if (isAvailable) {
+      bool isAvailable =
+          await OnlineSaver.checkServerAvailability(context: context, overrideUrl: url);
+      if (isAvailable && mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Backend URL uložen a server je dostupný'), backgroundColor: Colors.green),
+          const SnackBar(
+            content: Text('Backend URL uložen a server je dostupný'),
+            backgroundColor: Colors.green,
+          ),
         );
       }
     } else {
@@ -73,6 +80,46 @@ class _SettingsScreenState extends State<SettingsScreen> {
         SnackBar(content: Text(AppLocalizations.of(context)!.enterValidUrl)),
       );
     }
+  }
+
+  void _deleteData() {
+    showDialog(
+      context: context,
+      builder: (BuildContext dialogContext) {
+        final l10n = AppLocalizations.of(dialogContext)!;
+        return AlertDialog(
+          title: Text(l10n.deleteConfirmTitle),
+          content: Text(l10n.deleteConfirmContent),
+          actions: <Widget>[
+            ElevatedButton(
+              child: Text(l10n.cancel),
+              onPressed: () {
+                Navigator.of(dialogContext).pop();
+              },
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+              child: Text(l10n.delete),
+              onPressed: () {
+                LocalDataManager.shared.deleteAll();
+                Navigator.of(dialogContext).pop();
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text(l10n.deleteConfirmTitle)),
+                );
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _navigateToAbout() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const AboutScreen(),
+      ),
+    );
   }
 
   @override
@@ -84,7 +131,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         elevation: 0,
         title: Text(l10n.settings),
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -160,9 +207,32 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ],
             ),
             const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _saveSettings,
-              child: Text(l10n.save),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: _saveSettings,
+                child: Text(l10n.save),
+              ),
+            ),
+            const SizedBox(height: 20),
+            const Divider(),
+            ListTile(
+              contentPadding: EdgeInsets.zero,
+              leading: const Icon(Icons.info_outline),
+              title: Text(l10n.about),
+              trailing: const Icon(Icons.chevron_right),
+              onTap: _navigateToAbout,
+            ),
+            const Divider(),
+            ListTile(
+              contentPadding: EdgeInsets.zero,
+              leading: const Icon(Icons.delete_outline, color: Colors.red),
+              title: Text(
+                l10n.deleteData,
+                style: const TextStyle(color: Colors.red),
+              ),
+              trailing: const Icon(Icons.chevron_right, color: Colors.red),
+              onTap: _deleteData,
             ),
           ],
         ),
