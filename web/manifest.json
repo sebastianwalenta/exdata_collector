@@ -1,6 +1,6 @@
 {
-    "name": "exdata_collector",
-    "short_name": "exdata_collector",
+    "name": "EX-Boat DC",
+    "short_name": "EX-Boat DC",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
